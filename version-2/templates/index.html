@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index-page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<h1>Tours</h1>
+<a href="{{ url_for('add_tour') }}">Add Tour</a>
+<table>
+    <tr>
+        <th>Destination</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Type</th>
+        <th>Action</th>
+    </tr>
+    {% for tour in tours %}
+    <tr>
+        <td>{{ tour.destination }}</td>
+        <td>{{ tour.date }}</td>
+        <td>{{ tour.price }}</td>
+        <td>{{ tour.type }}</td>
+        <td><a href="{{ url_for('book', tour_id=tour.id) }}">Book</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
