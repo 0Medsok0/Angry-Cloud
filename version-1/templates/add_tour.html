@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Tour</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <h1>Add Tour</h1>
+    <form method="post" action="{{ url_for('add_tour') }}">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea name="description" required></textarea>
+        <br>
+        <label for="duration">Duration:</label>
+        <input type="text" name="duration" required>
+        <br>
+        <label for="price">Price:</label>
+        <input type="number" name="price" min="0" step="0.01" required>
+        <br>
+        <label for="includes">Includes:</label>
+        <textarea name="includes" required></textarea>
+        <br>
+        <label for="spots">Spots:</label>
+        <input type="number" name="spots" min="1" required>
+        <br>
+        <input type="submit" value="Add Tour">
+    </form>
+    <a href="{{ url_for('index') }}">Back to tours</a>
+</body>
+</html>

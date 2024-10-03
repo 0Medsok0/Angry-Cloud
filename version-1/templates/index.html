@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tour Booking</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <h1>Available Tours</h1>
+    <a href="{{ url_for('add_tour') }}">Add Tour</a>
+    <ul>
+        {% for tour in tours %}
+        <li>
+        <h2>{{ tour.name }}</h2>
+        <p>Spots available: {{ tour.spots }}</p>
+        <a href="{{ url_for('tour_details', tour_id=tour.id) }}">View details</a>
+        <a href="{{ url_for('delete_tour', tour_id=tour.id) }}">Delete tour</a>
+            <form method="post" action="/book">
+                <input type="hidden" name="tour_id" value="{{ tour.id }}">
+                <label for="spots">Spots to book:</label>
+                <input type="number" name="spots" min="1" max="{{ tour.spots }}">
+                <input type="submit" value="Book">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Tour</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <h1>Delete Tour</h1>
+    <p>Are you sure you want to delete "{{ tour.name }}"?</p>
+    <form method="post" action="{{ url_for('delete_tour', tour_id=tour.id) }}">
+        <input type="submit" value="Delete">
+    </form>
+    <a href="{{ url_for('index') }}">Back to tours</a>
+</body>
+</html>
